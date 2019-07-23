@@ -13,38 +13,3 @@ body {
     padding: 25px 0 0;
     text-align: center;
 }
-
-.list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    text-align: left;
-}
-
-.listItem {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    margin: 0 0 25px 0;
-}
-
-.listItem > .list {
-    margin-left: 25px;
-
-    & .listItem {
-        margin-bottom: 0;
-    }
-}
-
-.listAuthor {
-    font-size: 20px;
-    line-height: 30px;
-    color: #888787;
-}
-
-.listText {
-    font-size: 16px;
-    line-height: 20px;
-    color: #333;
-}

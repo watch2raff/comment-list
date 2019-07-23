@@ -1,0 +1,40 @@
+.list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+}
+
+.listButton {
+    color: #4c8cd8;
+}
+
+.listItem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 0 0 25px 0;
+}
+
+.listItem > .list {
+    padding-top: 10px;
+    margin-left: 25px;
+
+    & .listItem {
+        margin-bottom: 0;
+    }
+}
+
+.listAuthor {
+    font-size: 20px;
+    line-height: 30px;
+    color: #888787;
+}
+
+.listText {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    line-height: 20px;
+    color: #333;
+}
