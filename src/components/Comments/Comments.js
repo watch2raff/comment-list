@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 import Comment from "../Comment/Comment";
 import styles from "./styles.module.scss";
 
@@ -20,6 +21,11 @@ const Comments = ({ store, comments = {} }) => {
             </ul>
         </Fragment>
     );
+};
+
+Comments.propTypes = {
+    store: PropTypes.object,
+    comments: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
 };
 
 export default Comments;

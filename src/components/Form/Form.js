@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { observer } from "mobx-react";
 import styles from "./styles.module.scss";
 
@@ -34,5 +35,11 @@ const Form = observer(
         }
     }
 );
+
+Form.propTypes = {
+    state: PropTypes.object,
+    onChangeComment: PropTypes.func,
+    onChangeInput: PropTypes.func
+};
 
 export default Form;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { observer } from "mobx-react";
 import Comments from "../Comments/Comments";
 import Form from "../Form/Form";
@@ -9,7 +10,6 @@ const Comment = observer(
         constructor(props) {
             super(props);
             this.state = {
-                isShow: false,
                 name: "",
                 comment: ""
             };
@@ -28,18 +28,13 @@ const Comment = observer(
         };
 
         onClick = () => {
-            // this.setState({
-            //     isShow: !this.state.isShow
-            // });
-
-            this.props.store.setShowFormComment(this.props.comment.id);
+            this.props.store.setIsOpenFrom(this.props.comment.id);
         };
 
         renderForm = () => {
-            // if (!this.state.isShow) {
-            //     return null;
-            // }
-            if (!this.props.comment.isShowFrom) {
+            const { isOpen } = this.props.comment;
+
+            if (!isOpen) {
                 return null;
             }
 
@@ -53,14 +48,12 @@ const Comment = observer(
         };
 
         render() {
+            const { id, author, text, children } = this.props.comment;
+
             return (
-                <li className={styles.listItem} key={this.props.comment.id}>
-                    <span className={styles.listAuthor}>
-                        {this.props.comment.author}
-                    </span>
-                    <span className={styles.listText}>
-                        {this.props.comment.text}
-                    </span>
+                <li className={styles.listItem} key={id}>
+                    <span className={styles.listAuthor}>{author}</span>
+                    <span className={styles.listText}>{text}</span>
                     <button
                         onClick={this.onClick}
                         className={styles.listButton}
@@ -70,10 +63,10 @@ const Comment = observer(
 
                     {this.renderForm()}
 
-                    {this.props.comment.children ? (
+                    {children ? (
                         <Comments
                             store={this.props.store}
-                            comments={this.props.comment.children}
+                            comments={children}
                         />
                     ) : null}
                 </li>
@@ -81,5 +74,10 @@ const Comment = observer(
         }
     }
 );
+
+Comment.propTypes = {
+    store: PropTypes.object,
+    comment: PropTypes.object
+};
 
 export default Comment;
